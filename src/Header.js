@@ -16,6 +16,9 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import SignIn from "./Sign_in";
+import SignUp from "./Sign_up";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -131,8 +134,20 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <Router>
+        <Link to="/signin">
+          <MenuItem>Sign In</MenuItem>
+        </Link>
+        <Switch>
+          <Route exact path="/signin" component={SignIn} />
+        </Switch>
+        <Link to="/signup">
+          <MenuItem>Sign Up</MenuItem>
+        </Link>
+        <Switch>
+          <Route exact path="/signup" component={SignUp} />
+        </Switch>
+      </Router>
     </Menu>
   );
 
@@ -163,30 +178,21 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>*/}
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+      <AccountCircle />
     </Menu>
   );
   return (
-    <div className={classes.grow}>
-      <AppBar position="static">
-        <Toolbar>
-          <div>
-            <img
-              style={{ width: "100px", height: "22px" }}
-              src={require("./Flipkart.png")}
-            />
-          </div>
-          {/*<IconButton
+    <Router>
+      <div className={classes.grow}>
+        <AppBar position="static">
+          <Toolbar>
+            <div>
+              <img
+                style={{ width: "100px", height: "22px" }}
+                src={require("./Flipkart.png")}
+              />
+            </div>
+            {/*<IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
@@ -197,22 +203,22 @@ export default function PrimarySearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             Material-UI
           </Typography>*/}
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            {/*<IconButton aria-label="show 4 new mails" color="inherit">
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              {/*<IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <MailIcon />
               </Badge>
@@ -222,10 +228,14 @@ export default function PrimarySearchAppBar() {
                 <NotificationsIcon />
               </Badge>
             </IconButton>*/}
-            <Button variant="contained" color="primary">
-              Login
-            </Button>
-            {/*<IconButton
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleProfileMenuOpen}
+              >
+                Login
+              </Button>
+              {/*<IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
@@ -235,34 +245,35 @@ export default function PrimarySearchAppBar() {
             >
             <AccountCircle />
             </IconButton>*/}
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-      <div>
-        <img
-          style={{ width: "100%", height: "300px" }}
-          src={require("./images.png")}
-        />
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+        <div>
+          <img
+            style={{ width: "100%", height: "300px" }}
+            src={require("./images.png")}
+          />
+        </div>
+        <div>
+          <img
+            style={{ width: "100%", height: "140" }}
+            src={require("./Second.jpg")}
+          />
+        </div>
       </div>
-      <div>
-        <img
-          style={{ width: "100%", height: "140" }}
-          src={require("./Second.jpg")}
-        />
-      </div>
-    </div>
+    </Router>
   );
 }

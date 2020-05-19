@@ -57,6 +57,7 @@ export default function NestedGrid() {
               style={{ width: "100%", height: "250px" }}
               src={require("./1.webp")}
             />
+            <h4>Electronics Items</h4>
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -65,6 +66,7 @@ export default function NestedGrid() {
               style={{ width: "100%", height: "250px" }}
               src={require("./grocery-store.jpg")}
             />
+            <h4>Groceries Items</h4>
           </Paper>
         </Grid>
         <Grid item xs={4}>
@@ -73,6 +75,7 @@ export default function NestedGrid() {
               style={{ width: "100%", height: "250px" }}
               src={require("./images.jpeg")}
             />
+            <h4>HouseHold </h4>
           </Paper>
         </Grid>
       </React.Fragment>
@@ -87,10 +90,52 @@ export default function NestedGrid() {
         </Grid>
       </Grid>
       <CssBaseline />
-      <footer className={classes.footer} style={{ backgroundColor: "grey" }}>
-        <Container maxWidth="sm">
-          <Copyright />
-        </Container>
+      <footer
+        className="site-footer"
+        style={{ backgroundColor: "#242121", color: "#fff" }}
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-6 col-md-3">
+              <h4>About</h4>
+              <ul className="footer-links">
+                <li>About Us</li>
+                <li>Contact Us</li>
+                <li>Contribute</li>
+                <li>Privacy Policy</li>
+                <li>Sitemap</li>
+              </ul>
+            </div>
+            <div className="row">
+              <div className="col-md-3 col-sm-6 col-xs-12">
+                <h4>Social</h4>
+                <ul className="social-icons">
+                  <li className="facebook" href="#">
+                    Facebook
+                  </li>
+                  <li className="twitter" href="#">
+                    Twitter
+                  </li>
+                  <li className="dribbble" href="#">
+                    Dribbble
+                  </li>
+                  <li className="linkedin" href="#">
+                    linkedin
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container">
+          <div className="row" style={{ textAlign: "center" }}>
+            <div className="col-md-12">
+              <p className="copyright-text">
+                Copyright &copy; 2007-2020 Flipkart.com
+              </p>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );
